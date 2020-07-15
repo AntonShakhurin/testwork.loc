@@ -57,17 +57,18 @@
             <?
             foreach ($tasks as   $task):
                 ?>
-        <div class="col-4 mb-3">
+        <div class="col-12 mb-2">
                 <div class="card" >
                         <div class="card-header">
-                            имя пользователя: <br> <?=$task['user']?>
+                            имя пользователя: <?=$task['user']?>
+                            <h6 class="card-subtitle mb-2 text-muted">email: <?=$task['email']?></h6>
                         </div>
                         <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-muted">email:  <br><?=$task['email']?></h6>
+
                             <p class="card-text">текст задачи: <br> <?=htmlspecialchars($task['text'])?></p>
                         </div>
 
-                        <div class="card-footer text-muted" style="height: 50px">
+                        <div class="card-footer text-muted">
                             <?if($task['done']):?>
                                 статус: Выполнено
                             <?else:?>

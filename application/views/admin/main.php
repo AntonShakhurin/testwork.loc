@@ -25,18 +25,18 @@
      <?
      foreach ($tasks as   $task):
          ?>
-        <div class="col-4">
+        <div class="col-12">
                 <div class="card mb-3" >
                         <div class="card-header">
                             <a href="/admin/edittask/?task=<?=$task['id']?>"> Редактировать</a><br>
                             <?=$task['user']?>
+                            <h6 class="card-subtitle mb-2 text-muted"><?=$task['email']?></h6>
                         </div>
                         <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-muted"><?=$task['email']?></h6>
                             <p class="card-text"><?=htmlspecialchars($task['text'])?></p>
                         </div>
 
-                        <div class="card-footer text-muted" style="height: 65px">
+                        <div class="card-footer text-muted" >
                             <?if($task['done']):?>
                             Выполнено
                             <?endif;?>
