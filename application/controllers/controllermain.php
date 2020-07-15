@@ -6,6 +6,8 @@ class ControllerMain extends Controller{
 
 
     public function action_sort(){
+
+        //Сохранение сортировки
         $sort= $_GET['sort'];
         $order= $_GET['order'];
         session_start();
@@ -19,6 +21,7 @@ class ControllerMain extends Controller{
 
     public function action_remsort(){
 
+        //Удаление сортировки
         session_unset();
 
         header("Location: /");
@@ -29,6 +32,8 @@ class ControllerMain extends Controller{
 
     function action_index()
     {
+
+        //Вывод задач
         $limit = 3;
         $page =1;
         if (isset($_GET['page'])) $page = $_GET['page'];
@@ -43,6 +48,7 @@ class ControllerMain extends Controller{
         $pages = ceil($count/$limit);
 
 
+        //Формирование строчки для Сортировки
 
         $cur_sort='';
         switch ($sort){
@@ -57,7 +63,6 @@ class ControllerMain extends Controller{
                 break;
         }
 
-
         if (!empty($cur_sort)){
             switch ($order){
                 case 'ASC':
@@ -66,7 +71,6 @@ class ControllerMain extends Controller{
                 case 'DESC':
                     $cur_sort.=' &darr;';
                     break;
-
             }
         }
         else{
@@ -80,6 +84,7 @@ class ControllerMain extends Controller{
     }
     function action_createtask()
     {
+        //Создание новой задачи
 
         $user= $_POST['user'];
         $email= $_POST['email'];
@@ -87,6 +92,8 @@ class ControllerMain extends Controller{
         $tasks_model = new ModelTasks();
 
         $tasks_model->createtask($user,$email,$text);
+
+        //Вывод задачи
         $limit = 3;
 
         $page =1;
